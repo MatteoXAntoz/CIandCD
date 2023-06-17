@@ -1,0 +1,16 @@
+Name: RunApp
+
+on:
+  push:
+    branch:
+      -master
+
+
+jobs:
+  runs-on: windows:latest
+  s:
+    run: docker build -t runDocker -f .github/DockerFile
+
+
+
+
