@@ -15,5 +15,5 @@ jobs:
 
       - name: Build and run Docker image
         run: |
-          docker build -t runDocker -f .github/Dockerfile .
-          docker run runDocker
+          docker build -t rundocker -f .github/Dockerfile .
+          docker run rundocker
