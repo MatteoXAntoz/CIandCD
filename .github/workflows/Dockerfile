@@ -1,8 +1,8 @@
-FROM openjdk
+FROM openjdk:latest
 
-WORKDIR Data
-COPY src .
+WORKDIR /app
+COPY src/ .
 
-RUN javac Main.class
-RUN java Main.java
+RUN javac Main.java
 
+CMD ["java", "Main"]

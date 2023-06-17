@@ -1,16 +1,19 @@
-Name: RunApp
+name: RunApp
 
 on:
   push:
-    branch:
-      -master
-
+    branches:
+      - master
 
 jobs:
-  runs-on: windows:latest
-  s:
-    run: docker build -t runDocker -f .github/DockerFile
+  run:
+    runs-on: windows-latest
 
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-
-
+      - name: Build and run Docker image
+        run: |
+          docker build -t runDocker -f .github/Dockerfile .
+          docker run runDocker
