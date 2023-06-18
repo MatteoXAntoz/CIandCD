@@ -12,12 +12,15 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
-      - name: log in
+      - name: Log in to Docker
         run: docker login
-#
+      - name: Run docker build
+        run: docker build -t docker -f .github/workflows/dockerfile
+      - name: run Docker
+        run: docker run docker
 
-      - name: Build and run Docker image
-        run: |
-          docker build -t rundocker -f Dockerfile .
-          docker run rundocker
+
+
+
+
+
