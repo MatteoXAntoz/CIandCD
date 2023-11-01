@@ -22,5 +22,7 @@ jobs:
       with:
         java-version: '11'
         distribution: 'adopt'
+    - name: Compile Java
+      run: javac -d bin src/Rechner.java
     - name: Run Java
-      run: javac src/Rechner.java
+      run: java -cp bin Rechner
