@@ -22,5 +22,7 @@ jobs:
       with:
         java-version: '11'
         distribution: 'adopt'
-    - name: Build with Gradle
-      run: ./gradlew build
+    - name: Build and Run
+      run: javac MainTest.java
+       java -cp .:path/to/junit.jar:path/to/hamcrest.jar org.junit.runner.JUnitCore MainTest.java
+
