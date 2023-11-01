@@ -23,4 +23,4 @@ jobs:
         java-version: '11'
         distribution: 'adopt'
     - name: Run Java
-      run: javac src/Rechner.java
+      run: javac src/Main.java
