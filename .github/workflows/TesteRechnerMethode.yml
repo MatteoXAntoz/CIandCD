@@ -1,13 +1,6 @@
-name: Java CI with Gradle
+name: Java CI with JUnit
 
-on:
-  push:
-    branches: [master]
-  pull_request:
-    branches: [master]
-
-permissions:
-  contents: read
+on: [push]
 
 jobs:
   build:
@@ -15,20 +8,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
+    - name: Check out the code
       uses: actions/checkout@v2
+
     - name: Set up JDK 11
-      uses: actions/setup-java@v3
+      uses: actions/setup-java@v2
       with:
-        java-version: '11'
-        distribution: 'adopt'
-    - name: Install JUnit
-      run: |
-        mkdir -p lib
-        wget https://repo1.maven.org/maven2/junit/junit/4.13.2/junit-4.13.2.jar -O lib/junit-4.13.2.jar
-      # Kompiliere deine Testklasse und die Hauptklasse (falls erforderlich)
-    - name: Compile Java
-      run: javac -cp lib/junit-4.13.2.jar:src -d bin src/MainTest.java
-    # Führe die JUnit-Tests aus
+        java-version: 11
+
+    - name: Build with Gradle
+      run: ./gradlew build
+
     - name: Run JUnit Tests
-      run: java -cp bin:lib/junit-4.13.2.jar org.junit.runner.JUnitCore MainTest
+      run: ./gradlew test
+
