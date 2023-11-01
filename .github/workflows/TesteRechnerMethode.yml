@@ -22,5 +22,13 @@ jobs:
       with:
         java-version: '11'
         distribution: 'adopt'
-    - name: Run Java
-      run: javac src/MainTest.java
+    - name: Install JUnit
+      run: |
+        mkdir -p lib
+        wget https://repo1.maven.org/maven2/junit/junit/4.13.2/junit-4.13.2.jar -O lib/junit-4.13.2.jar
+      # Kompiliere deine Testklasse und die Hauptklasse (falls erforderlich)
+    - name: Compile Java
+      run: javac -cp lib/junit-4.13.2.jar:src -d bin src/MainTest.java
+    # Führe die JUnit-Tests aus
+    - name: Run JUnit Tests
+      run: java -cp bin:lib/junit-4.13.2.jar org.junit.runner.JUnitCore MainTest
