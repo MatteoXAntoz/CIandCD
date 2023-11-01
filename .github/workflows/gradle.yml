@@ -22,5 +22,5 @@ jobs:
       with:
         java-version: '11'
         distribution: 'adopt'
-    - name: Run Java
-      run: javac src/Main.java
+    - name: Build with Gradle
+      run: ./gradlew build
